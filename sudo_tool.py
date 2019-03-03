@@ -1,6 +1,6 @@
 # coding=utf-8
 
-import paramkio
+import paramiko
 import os
 
 print "hello"
