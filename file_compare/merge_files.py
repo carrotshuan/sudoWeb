@@ -99,6 +99,7 @@ def calculate_MD5(filepath):
 # 	script_name = single_sudo_script_fullpath.split("/")[-1]
 # 	print "current merging filename: " + script_name
 
+
 # 将源文件夹中的文件，合并到目标文件夹中，相同文件不需合并，不同文件拷贝到目标文件中
 def merge_two_directory_directly(source_directory_fullpath, target_directory_fullpath):
 
