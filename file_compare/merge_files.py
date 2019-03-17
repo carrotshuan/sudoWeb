@@ -7,7 +7,8 @@ import os
 import configparser
 import re
 import time
-
+import random
+import string
 
 # 显示颜色
 color_red_start = "\033[0;31;40m"
@@ -130,9 +131,11 @@ def merge_two_directory_directly(source_directory_fullpath, target_directory_ful
 			if not current_md5 in md5_of_target_files:
 				# 	script_path = single_sudo_script_fullpath[0:single_sudo_script_fullpath.rfind("/")]
 				script_name = single_source_file_fullpath.split("/")[-1]
-
+				random_string = ''.join(random.sample(string.ascii_letters + string.digits, 8)) # 同一秒可能存在多个文件在拷贝，利用随机数避免覆盖
+				# print "random string : "+random_string
+				
 				print color_yellow_start+"File: " + single_source_file_fullpath + " not in directory: " + target_directory_fullpath + ", begin copy."
-				command = "cp "+single_source_file_fullpath+" "+target_directory_fullpath+"/"+script_name+time.strftime("_%Y_%m_%d_%H_%M_%S",time.localtime(time.time()))
+				command = "cp "+single_source_file_fullpath+" "+target_directory_fullpath+"/"+script_name+time.strftime("_%Y_%m_%d_%H_%M_%S",time.localtime(time.time()))+"_"+random_string
 				print "ececute command: "+command+color_end
 				os.system(command)
 			else:
